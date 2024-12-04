@@ -1,0 +1,63 @@
+<div class="container">
+  <h2>Add Contact</h2>
+  <form (ngSubmit)="onAddContact()">
+    <!-- First Name Field -->
+    <div class="mb-3">
+      <label for="firstName" class="form-label">First Name</label>
+      <input
+        id="firstName"
+        class="form-control"
+        [(ngModel)]="contact.firstName"
+        name="firstName"
+        required
+        #firstName="ngModel"
+      />
+      <div *ngIf="firstName.invalid && firstName.touched" class="text-danger">
+        First name is required.
+      </div>
+    </div>
+
+    <!-- Last Name Field -->
+    <div class="mb-3">
+      <label for="lastName" class="form-label">Last Name</label>
+      <input
+        id="lastName"
+        class="form-control"
+        [(ngModel)]="contact.lastName"
+        name="lastName"
+        required
+        #lastName="ngModel"
+      />
+      <div *ngIf="lastName.invalid && lastName.touched" class="text-danger">
+        Last name is required.
+      </div>
+    </div>
+
+    <!-- Email Field with Email Validation -->
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input
+        id="email"
+        class="form-control"
+        [(ngModel)]="contact.email"
+        name="email"
+        type="email"
+        required
+        #email="ngModel"
+        email
+      />
+      <div *ngIf="email.invalid && email.touched" class="text-danger">
+        A valid email is required.
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button
+      class="btn btn-success"
+      type="submit"
+      [disabled]="!isFormValid()"
+    >
+      Add Contact
+    </button>
+  </form>
+</div>
